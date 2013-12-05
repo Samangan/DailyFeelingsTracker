@@ -9,7 +9,7 @@ Buidling
 
 `$ npm install`
 
-
+Ensure that grunt is installed globally with `npm install -g grunt-cli`
 
 Testing
 =======
