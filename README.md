@@ -1,6 +1,8 @@
 Daily Feelings Tracker
 ----------------------
 
+An Angularjs app utilizing local storage to allow users to track their changes in mood each day. Users can create tags to allow for more specific visualization filtering based on specific tags.
+
 Buidling
 ========
 `$ git clone https://github.com/Samangan/DailyFeelingsTracker.git`
