@@ -15,7 +15,7 @@ Buidling
 Deploying Locally
 =================
 
-`$ grunt server`
+`$ grunt serve`
 
 
 Testing
