@@ -11,9 +11,20 @@ Buidling
 
 `$ bower install`
 
-Ensure that grunt is installed globally with `npm install -g grunt-cli`
+
+Deploying Locally
+=================
+
+`$ grunt server`
+
 
 Testing
 =======
 
-`grunt`
+`$ grunt`
+
+
+TODO List
+=========
+
+[TODO board](https://trello.com/b/lf5OmGdt/muhfeels-js)
