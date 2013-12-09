@@ -9,6 +9,8 @@ Buidling
 
 `$ npm install`
 
+`$ bower install`
+
 Ensure that grunt is installed globally with `npm install -g grunt-cli`
 
 Testing
