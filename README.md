@@ -15,6 +15,8 @@ Buidling
 Deploying Locally
 =================
 
+To deploy your site locally and keep running in live reload mode run:
+
 `$ grunt serve`
 
 
