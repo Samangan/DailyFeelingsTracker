@@ -16,7 +16,20 @@ describe('Controller: MainCtrl', function () {
     });
   }));
 
-  /*it('should attach a list of awesomeThings to the scope', function () {
-    expect(scope.awesomeThings.length).toBe(3);
-  });*/
+  it('should return the actual first and last day of the week for the inputted day', function () {
+    var currentDate = new Date(2013, 11, 9);
+    var startAndEndOfCurrentWeek = scope.getFirstAndLastDayOfCurrentWeek(currentDate);
+    expect(startAndEndOfCurrentWeek[0].getTime()).toBe(new Date(2013, 11, 8).getTime()); //Sunday
+    expect(startAndEndOfCurrentWeek[1].getTime()).toBe(new Date(2013, 11, 14).getTime()); //Saturday
+  });
+
+  it('should throw an exception when no date is passed', function () {
+    expect(function(){scope.getFirstAndLastDayOfCurrentWeek();}).toThrow('Current date required');
+  });
+
+
+  // TODO: test to handle case where 1st and last are in different months
+
+  // TODO: test to handle case where 1st and last days are in different years.
+  
 });
