@@ -24,7 +24,7 @@ describe('Controller: MainCtrl', function () {
   });
 
 
-  it('should return the first aday of the week even when the week spans multiple months', function () {
+  it('should return the first day of the week even when the week spans multiple months', function () {
     var currentDate = new Date(2013, 9, 31);
     var startOfWeek = scope.thisWeek.getFirstDayOfTheWeek(currentDate);
     var sunday = new Date(2013, 9, 27);
