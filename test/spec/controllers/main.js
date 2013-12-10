@@ -18,18 +18,30 @@ describe('Controller: MainCtrl', function () {
 
   it('should return the actual first and last day of the week for the inputted day', function () {
     var currentDate = new Date(2013, 11, 9);
-    var startAndEndOfCurrentWeek = scope.getFirstAndLastDayOfCurrentWeek(currentDate);
-    expect(startAndEndOfCurrentWeek[0].getTime()).toBe(new Date(2013, 11, 8).getTime()); //Sunday
-    expect(startAndEndOfCurrentWeek[1].getTime()).toBe(new Date(2013, 11, 14).getTime()); //Saturday
+    var startAndEndOfCurrentWeek = scope.thisWeek.getFirstAndLastDayOfCurrentWeek(currentDate);
+    var sunday = new Date(2013, 11, 8);
+    var saturday = new Date(2013, 11, 14);
+    expect(startAndEndOfCurrentWeek[0].getTime()).toBe(sunday.getTime());
+    expect(startAndEndOfCurrentWeek[1].getTime()).toBe(saturday.getTime());
   });
 
-  it('should throw an exception when no date is passed', function () {
-    expect(function(){scope.getFirstAndLastDayOfCurrentWeek();}).toThrow('Current date required');
+
+  it('should return the actual first and last day of the week even when the week spans multiple months', function () {
+    var currentDate = new Date(2013, 9, 31);
+    var startAndEndOfCurrentWeek = scope.thisWeek.getFirstAndLastDayOfCurrentWeek(currentDate);
+    var sunday = new Date(2013, 9, 27);
+    var saturday = new Date(2013, 10, 2);
+    expect(startAndEndOfCurrentWeek[0].getTime()).toBe(sunday.getTime());
+    expect(startAndEndOfCurrentWeek[1].getTime()).toBe(saturday.getTime());
   });
 
-
-  // TODO: test to handle case where 1st and last are in different months
-
-  // TODO: test to handle case where 1st and last days are in different years.
+  it('should return the actual first and last day of the week even when the week spans multiple years', function () {
+    var currentDate = new Date(2013, 11, 31);
+    var startAndEndOfCurrentWeek = scope.thisWeek.getFirstAndLastDayOfCurrentWeek(currentDate);
+    var sunday = new Date(2013, 11, 29);
+    var saturday = new Date(2014, 0, 4);
+    expect(startAndEndOfCurrentWeek[0].getTime()).toBe(sunday.getTime());
+    expect(startAndEndOfCurrentWeek[1].getTime()).toBe(saturday.getTime());
+  });
   
 });

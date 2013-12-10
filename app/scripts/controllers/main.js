@@ -1,22 +1,33 @@
 'use strict';
 
-angular.module('dailyFeelingTrackerApp')
-  .controller('MainCtrl', function ($scope, $localStorage) {
+var app = angular.module('dailyFeelingTrackerApp');
 
+app.factory('ThisWeek', function () {
+    var Week = function () {
+        // TODO: more
 
-    //TODO: place this in the most logical place
-    $scope.getFirstAndLastDayOfCurrentWeek = function (currentDate) {
-      
-      if (!currentDate) {
-        throw 'Current date required';
-      }
+        this.getFirstAndLastDayOfCurrentWeek = function (currentDate) {
+          // currentDate is only for testing that this function works.
+          // it is an optional parameter
+          if (!currentDate) {
+            currentDate = new Date();
+          }
 
+          currentDate.setHours(0,0,0,0);
+          var previousSunday = new Date(currentDate);
+          previousSunday.setDate(previousSunday.getDate() - previousSunday.getDay());
 
-      // TODO: Implement
-      var sunday = new Date(2013, 11, 8);
-      var saturday = new Date(2013, 11, 14);
+          var thisSaturday = new Date(currentDate);
+          thisSaturday.setDate(thisSaturday.getDate() - thisSaturday.getDay() + 6);
 
-      return [sunday, saturday];
-    };
+          return [previousSunday, thisSaturday];
+        };
+      };
+    return Week;
+  });
+
+app.controller('MainCtrl', function ($scope, $localStorage, ThisWeek) {
+
+    $scope.thisWeek = new ThisWeek();
 
   });
