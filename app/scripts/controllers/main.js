@@ -24,16 +24,7 @@ app.factory('ThisWeek', function () {
       // Generate this week
       var firstDayOfTheCurrentWeek = this.getFirstDayOfTheWeek();
 
-      // Push the first day
-      this.days.push({
-        id: 0,
-        date: firstDayOfTheCurrentWeek.toString(),
-        moodRanking: 5,
-        tags: ['tired', 'drank too much'],
-        currentDay: false
-      });
-
-      for (var i = 1; i < 7; i++) {
+      for (var i = 0; i < 7; i++) {
         var day = new Date(firstDayOfTheCurrentWeek);
         day.setHours(0,0,0,0);
         day.setDate(firstDayOfTheCurrentWeek.getDate() + i);
@@ -47,11 +38,10 @@ app.factory('ThisWeek', function () {
         });
       }
 
-      //TODO: set current day in this.days
+      // Set current day in this.days
       this.days[new Date().getDay()].currentDay = true;
 
     };
-
 
     return Week;
   });
@@ -59,10 +49,7 @@ app.factory('ThisWeek', function () {
 app.controller('MainCtrl', function ($scope, $localStorage, ThisWeek) {
 
     $scope.thisWeek = new ThisWeek();
-    $localStorage.$reset(); // TODO: remove me once I finish coding the ThisWeek factory
-
-    $scope.thisWeekDays = $localStorage.$default({
-      days: $scope.thisWeek.days
-    });
+   
+    $scope.thisWeekDays =  $scope.thisWeek.days;
 
   });
