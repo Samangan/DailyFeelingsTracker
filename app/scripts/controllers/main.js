@@ -48,6 +48,7 @@ app.factory('ThisWeek', function () {
       }
 
       //TODO: set current day in this.days
+      this.days[new Date().getDay()].currentDay = true;
 
     };
 

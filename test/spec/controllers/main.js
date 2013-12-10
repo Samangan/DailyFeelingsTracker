@@ -44,5 +44,34 @@ describe('Controller: MainCtrl', function () {
     var sunday = new Date(2013, 11, 29);
     expect(startOfWeek.getTime()).toBe(sunday.getTime());
   });
+
+  it('should have a current day in the current week', function() {
+    var days = scope.thisWeek.days;
+    var seenCurrentDay = false;
+
+    for (var i = 0; i < days.length; i++) {
+      if (days[i].currentDay) {
+        seenCurrentDay = true;
+      }
+    }
+    expect(seenCurrentDay).toBe(true);
+  });
+
+  it('should only have one current day per week', function () {
+    var days = scope.thisWeek.days;
+    var seenCurrentDay = false;
+    var alreadySeenCurrentDay = false;
+
+    for (var i = 0; i < days.length; i++) {
+      if (days[i].currentDay && seenCurrentDay) {
+        alreadySeenCurrentDay = true;
+      }
+
+      if (days[i].currentDay) {
+        seenCurrentDay = true;
+      }
+    }
+    expect(alreadySeenCurrentDay).toBe(false);
+  });
   
 });
