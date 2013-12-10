@@ -4,7 +4,16 @@ var app = angular.module('dailyFeelingTrackerApp');
 
 app.factory('ThisWeek', function () {
     var Week = function () {
-        // TODO: more
+        
+        // TODO: What is the best way to generate the week info?
+        this.days = [
+          {
+            id: 0
+          },
+          {
+            id: 1
+          }
+        ];
 
         this.getFirstAndLastDayOfCurrentWeek = function (currentDate) {
           // currentDate is only for testing that this function works.
@@ -29,5 +38,10 @@ app.factory('ThisWeek', function () {
 app.controller('MainCtrl', function ($scope, $localStorage, ThisWeek) {
 
     $scope.thisWeek = new ThisWeek();
+    //$localStorage.$reset();
+
+    $scope.thisWeekDays = $localStorage.$default({
+      days: $scope.thisWeek.days
+    });
 
   });
