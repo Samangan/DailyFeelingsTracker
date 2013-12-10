@@ -24,6 +24,11 @@ describe('Controller: MainCtrl', function () {
   });
 
 
+  // TODO: the below tests need to be changed in order to test what was being tested now that
+  // I only need to return the first day of the week.
+
+  // TODO: instead of calling the getFirstDayOfTheWeek() function directly
+  // I need to call it and then test that the last day in days[] is correct
   it('should return the first day of the week even when the week spans multiple months', function () {
     var currentDate = new Date(2013, 9, 31);
     var startOfWeek = scope.thisWeek.getFirstDayOfTheWeek(currentDate);
@@ -31,6 +36,8 @@ describe('Controller: MainCtrl', function () {
     expect(startOfWeek.getTime()).toBe(sunday.getTime());
   });
 
+  // TODO: instead of calling the getFirstDayOfTheWeek() function directly
+  // I need to call it and then test that the last day in days[] is correct
   it('should return the first day of the week even when the week spans multiple years', function () {
     var currentDate = new Date(2013, 11, 31);
     var startOfWeek = scope.thisWeek.getFirstDayOfTheWeek(currentDate);
