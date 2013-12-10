@@ -16,7 +16,7 @@ describe('Controller: MainCtrl', function () {
     });
   }));
 
-  it('should return the actual first and last day of the week for the inputted day', function () {
+  it('should return the first day of the week for the inputted day', function () {
     var currentDate = new Date(2013, 11, 9);
     var startOfCurrentWeek = scope.thisWeek.getFirstDayOfTheWeek(currentDate);
     var sunday = new Date(2013, 11, 8);
@@ -24,14 +24,14 @@ describe('Controller: MainCtrl', function () {
   });
 
 
-  it('should return the actual first and last day of the week even when the week spans multiple months', function () {
+  it('should return the first aday of the week even when the week spans multiple months', function () {
     var currentDate = new Date(2013, 9, 31);
     var startOfWeek = scope.thisWeek.getFirstDayOfTheWeek(currentDate);
     var sunday = new Date(2013, 9, 27);
     expect(startOfWeek.getTime()).toBe(sunday.getTime());
   });
 
-  it('should return the actual first and last day of the week even when the week spans multiple years', function () {
+  it('should return the first day of the week even when the week spans multiple years', function () {
     var currentDate = new Date(2013, 11, 31);
     var startOfWeek = scope.thisWeek.getFirstDayOfTheWeek(currentDate);
     var sunday = new Date(2013, 11, 29);
