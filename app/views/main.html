@@ -9,15 +9,23 @@
 
 <div class="content" ng-app='angularLearningAppApp' ng-controller='MainCtrl'>
 
+  <h2>This Week</h2>
   <div class="week">
-    <h2>This Week</h2>
-    <div class="day" data-ng-repeat="day in thisWeekDays.days">
-      {{day}}
+    <div class="day" data-ng-repeat="day in thisWeekDays.days" ng-class="{currentDay: day.currentDay}">
+      
+      <div class="dayOfTheWeek">{{day.day}}</div>
+      <div class="date">{{day.prettyDate}}</div>      
+      <div class="moodRanking">☹<input type="range" min="0" max="10" value="{{day.moodRanking}}" /><div class="smiley">☺</div></div>
+      <div class="tags">
+        <div class="tag" data-ng-repeat="tag in day.tags">
+          {{tag}}
+        </div>        
+      </div>
+
+      <div class="addTag">Add a Tag ...</div>
+      
     </div>
   </div>
+  <h2>This Year</h2>
 
-</div>
-
-<div class="footer">
-  <p>This is a footer</p>
 </div>

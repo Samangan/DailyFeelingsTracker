@@ -22,6 +22,15 @@ app.factory('ThisWeek', function ($localStorage) {
       };
        
       this.days = [];
+      var dayOfWeek = [
+        'Sunday',
+        'Monday',
+        'Tuesday',
+        'Wednesday',
+        'Thursday',
+        'Friday',
+        'Saturday'
+      ];
 
       // Generate this week's data
       var firstDayOfTheCurrentWeek = this.getFirstDayOfTheWeek();
@@ -41,7 +50,9 @@ app.factory('ThisWeek', function ($localStorage) {
           console.log('exists, not totally overwritting');
           this.days.push({
             id: i,
+            day: prevDate.day,
             date: prevDate.date,
+            prettyDate: prevDate.prettyDate,
             moodRanking: prevDate.moodRanking,
             tags: prevDate.tags,
             currentDay: false
@@ -53,9 +64,11 @@ app.factory('ThisWeek', function ($localStorage) {
 
           this.days.push({
             id: i,
+            day: dayOfWeek[day.getDay()],
             date: day.toString(),
+            prettyDate: day.getMonth() + 1 + '/' + day.getDate() + '/' + day.getFullYear(),
             moodRanking: i,
-            tags: ['worked too much'],
+            tags: ['worked too much', 'tired', 'really, really long tag test'],
             currentDay: false
           });
         }
@@ -65,6 +78,8 @@ app.factory('ThisWeek', function ($localStorage) {
 
       // Set current day in this.days
       this.days[new Date().getDay()].currentDay = true;
+      this.days[new Date().getDay()].day = 'Today'; // TODO: Do I want this?
+      this.days[new Date().getDay()].tags.push('test'); // TODO: Do I want this?
 
     };
 
@@ -73,11 +88,11 @@ app.factory('ThisWeek', function ($localStorage) {
 
 app.controller('MainCtrl', function ($scope, $localStorage, ThisWeek) {
     //TODO: test deleting local storage to ensure the null check worked
-    //$localStorage.$reset();
+    $localStorage.$reset();
 
     $scope.thisWeek = new ThisWeek($localStorage);
    
-    $scope.thisWeekDays  = $localStorage.$default({
+    $scope.thisWeekDays = $localStorage.$default({
       days: $scope.thisWeek.days
     });
 
