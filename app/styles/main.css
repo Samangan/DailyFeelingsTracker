@@ -11,7 +11,7 @@ body {
 
 
 /* Week Calendar View*/
-.week {
+.mood-week {
   white-space: nowrap;
   width:100%;
   display: block;
@@ -20,7 +20,7 @@ body {
 }
 
 /* Each day div */
-.day {
+.mood-day {
   background: rgba(238, 205, 92, 0.5);
   margin-left: 0px;
   margin-right: 10px;
@@ -70,7 +70,7 @@ body {
   font-size: 20px;
 }
 
-.date {
+.mood-date {
   text-align: center;
   font-size: 20px;
 }

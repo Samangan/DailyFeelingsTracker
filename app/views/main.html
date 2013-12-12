@@ -5,11 +5,11 @@
 <div class="content" ng-app='angularLearningAppApp' ng-controller='MainCtrl'>
 
   <h2>This Week</h2>
-  <div class="week">
-    <div class="day" data-ng-repeat="day in thisWeekDays.days" ng-class="{currentDay: day.currentDay}">
+  <div class="mood-week">
+    <div class="mood-day" data-ng-repeat="day in thisWeekDays.days" ng-class="{currentDay: day.currentDay}">
       
       <div class="dayOfTheWeek">{{day.day}}</div>
-      <div class="date">{{day.prettyDate}}</div>   
+      <div class="mood-date">{{day.prettyDate}}</div>   
 
       <div class="moodRanking">
         ☹<input type="range" min="0" max="10" value="{{day.moodRanking}}" ng-model="day.moodRanking" /><div class="smiley">☺</div></div>
@@ -26,6 +26,28 @@
 
   <h2>This Year</h2>
 
-  <div class="year"></div>
+  <div id="cal-heatmap" class="year"></div>
+
+  <script type="text/javascript">
+    var today = new Date();
+
+    var testYearlyData = {}; //TODO: finish
+
+
+
+    //TODO: test cal-heatmap below
+    var cal = new CalHeatMap();
+    cal.init({
+      data: testYearlyData,
+      start: new Date (today.getFullYear(), 1),
+      domain: "month",
+      subDomain: "day",
+      range: 12,
+      scale: [40, 60, 80, 100]
+
+    });
+
+  </script>
+
 
 </div>

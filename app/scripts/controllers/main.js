@@ -105,6 +105,8 @@ app.controller('MainCtrl', function ($scope, $localStorage, ThisWeek) {
       }
     };
 
+    $scope.thisYear = [];
+
   });
 
 
