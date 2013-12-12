@@ -104,6 +104,11 @@ body {
   border-color: rgba(218, 236, 238, 0.83);
 }
 
+.year {
+  position:relative;
+  float:left;
+}
+
 
 
 /* Everything but the jumbotron gets side spacing for mobile first views */

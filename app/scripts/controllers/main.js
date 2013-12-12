@@ -102,7 +102,7 @@ app.controller('MainCtrl', function ($scope, $localStorage, ThisWeek) {
     $scope.editTag = function (day, index, value) {
       if(value.replace(/^\s+|\s+$/g, '')) {
         day.tags[index] = value;
-      } 
+      }
     };
 
   });
