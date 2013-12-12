@@ -20,6 +20,10 @@ app.factory('ThisWeek', function ($localStorage) {
 
         return previousSunday;
       };
+
+      this.addTag = function (day) {
+        day.tags.push(' ');
+      };
        
       this.days = [];
       var dayOfWeek = [
@@ -86,6 +90,8 @@ app.factory('ThisWeek', function ($localStorage) {
   });
 
 app.controller('MainCtrl', function ($scope, $localStorage, ThisWeek) {
+    
+
     //$localStorage.$reset();
 
     $scope.thisWeek = new ThisWeek($localStorage);

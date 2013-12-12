@@ -15,15 +15,15 @@
         ☹<input type="range" min="0" max="10" value="{{day.moodRanking}}" ng-model="day.moodRanking" /><div class="smiley">☺</div></div>
 
       <div class="tags">
-        <div class="tag" data-ng-repeat="tag in day.tags">
+        <div class="tag" data-ng-repeat="tag in day.tags track by $index">
           {{tag}}
         </div>        
       </div>
 
-      <div class="addTag">Add a Tag ...</div>
-      
+      <div class="addTag" ng-click="thisWeek.addTag(day)">Add a Tag ...</div>
     </div>
   </div>
+
   <h2>This Year</h2>
 
 </div>
