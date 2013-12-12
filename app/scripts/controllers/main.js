@@ -79,7 +79,6 @@ app.factory('ThisWeek', function ($localStorage) {
       // Set current day in this.days
       this.days[new Date().getDay()].currentDay = true;
       this.days[new Date().getDay()].day = 'Today'; // TODO: Do I want this?
-      this.days[new Date().getDay()].tags.push('test'); // TODO: Do I want this?
 
     };
 
@@ -87,8 +86,7 @@ app.factory('ThisWeek', function ($localStorage) {
   });
 
 app.controller('MainCtrl', function ($scope, $localStorage, ThisWeek) {
-    //TODO: test deleting local storage to ensure the null check worked
-    $localStorage.$reset();
+    //$localStorage.$reset();
 
     $scope.thisWeek = new ThisWeek($localStorage);
    
