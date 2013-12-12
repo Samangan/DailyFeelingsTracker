@@ -9,8 +9,11 @@
     <div class="day" data-ng-repeat="day in thisWeekDays.days" ng-class="{currentDay: day.currentDay}">
       
       <div class="dayOfTheWeek">{{day.day}}</div>
-      <div class="date">{{day.prettyDate}}</div>      
-      <div class="moodRanking">☹<input type="range" min="0" max="10" value="{{day.moodRanking}}" /><div class="smiley">☺</div></div>
+      <div class="date">{{day.prettyDate}}</div>   
+
+      <div class="moodRanking">
+        ☹<input type="range" min="0" max="10" value="{{day.moodRanking}}" ng-model="day.moodRanking" /><div class="smiley">☺</div></div>
+
       <div class="tags">
         <div class="tag" data-ng-repeat="tag in day.tags">
           {{tag}}
