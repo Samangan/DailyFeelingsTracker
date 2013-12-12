@@ -22,7 +22,7 @@ app.factory('ThisWeek', function ($localStorage) {
       };
 
       this.addTag = function (day) {
-        day.tags.push(' ');
+        day.tags.push('--Enter Tag Name--');
       };
        
       this.days = [];
@@ -91,7 +91,6 @@ app.factory('ThisWeek', function ($localStorage) {
 
 app.controller('MainCtrl', function ($scope, $localStorage, ThisWeek) {
     
-
     //$localStorage.$reset();
 
     $scope.thisWeek = new ThisWeek($localStorage);
@@ -101,10 +100,11 @@ app.controller('MainCtrl', function ($scope, $localStorage, ThisWeek) {
     });
 
     $scope.editTag = function (day, index, value) {
-      console.log(day);
-      console.log(index);
-      console.log(value);
-      day.tags[index] = value;
+      if(value.replace(/^\s+|\s+$/g, '')) {
+        day.tags[index] = value;
+      } else {
+        // replace with the previous value...
+      }
     };
 
   });
@@ -153,8 +153,10 @@ app.directive('inlineEdit', function($timeout) {
         }, 0, false);
       };
       scope.save = function() {
-        scope.editMode = false;
-        scope.handleSave({value: scope.model});
+        if(scope.model.replace(/^\s+|\s+$/g, '')){
+          scope.editMode = false;
+          scope.handleSave({value: scope.model});
+        }
       };
       scope.cancel = function() {
         scope.editMode = false;

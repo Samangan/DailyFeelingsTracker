@@ -57,6 +57,10 @@ body {
   line-height: 50px;
 }
 
+.editSpan {
+  display:block;
+}
+
 .currentDay {
    background: rgba(238, 205, 92, 0.70);
 }
