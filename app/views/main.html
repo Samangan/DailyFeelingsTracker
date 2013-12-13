@@ -28,39 +28,5 @@
 
   <div id="cal-heatmap"></div>
 
-  <script type="text/javascript">
-    var today = new Date();
-
-    var testYearlyData = [];
-    testYearlyData.push({
-      '946705035': '4' //expects date.getTime() / 1000 (seconds)
-                        // I also do not think I can use a Js array. I think it needs to be a file....
-    });
-
-
-
-    //TODO: test cal-heatmap below
-    var cal = new CalHeatMap();
-    cal.init({
-      data: testYearlyData,
-      dataType: "json",
-      start: new Date(2000, 0), //new Date (today.getFullYear(), 1),
-      domain: "month",
-      subDomain: "day",
-      range: 12,
-      legend: [5, 10, 15, 20, 25, 30],
-
-      legendColors: {
-      empty: "#ededed",
-      min: "#40ffd8",
-      max: "#f20013"
-    },
-    highlight: ["now", today]
-
-
-    });
-
-  </script>
-
 
 </div>

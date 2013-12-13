@@ -54,7 +54,7 @@ app.factory('ThisWeek', function ($localStorage) {
           console.log('exists, not totally overwritting');
           this.days.push({
             id: i,
-            day: prevDate.day,
+            day: dayOfWeek[prevDate.date.getDay()],
             date: prevDate.date,
             prettyDate: prevDate.prettyDate,
             moodRanking: prevDate.moodRanking,
