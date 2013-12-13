@@ -5,7 +5,8 @@ angular.module('dailyFeelingTrackerApp', [
   'ngResource',
   'ngSanitize',
   'ngRoute',
-  'ngStorage'
+  'ngStorage',
+  'dailyFeelingTrackerApp.controller'
 ])
   .config(function ($routeProvider) {
     $routeProvider
@@ -17,3 +18,8 @@ angular.module('dailyFeelingTrackerApp', [
         redirectTo: '/'
       });
   });
+
+
+// dependency injection
+angular.module('dailyFeelingTrackerApp.controller', []);
+
