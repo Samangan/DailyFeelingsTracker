@@ -1,7 +1,9 @@
 'use strict';
 
-var app = angular.module('dailyFeelingTrackerApp.directives')
-  .directive('barsChart', ['d3', function (d3) {
+var app = angular.module('dailyFeelingTrackerApp.directives');
+
+// Test d3 directive
+app.directive('barsChart',  function (d3) {
   return {
     restrict: 'E',
     replace: false,
@@ -21,4 +23,4 @@ var app = angular.module('dailyFeelingTrackerApp.directives')
         .text(function(d) { return d + '%'; });
     }
   };
-}]);
+});
