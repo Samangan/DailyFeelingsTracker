@@ -2,30 +2,6 @@
 
 var app = angular.module('dailyFeelingTrackerApp.directives');
 
-// Test d3 directive
-app.directive('barsChart',  function (d3) {
-  return {
-    restrict: 'E',
-    replace: false,
-    scope: {data: '=chartData'},
-    // TODO: slowly start to add d3 stuff
-    // make it a very simple d3 svg stuff
-    link: function(scope, element, attr) {
-      console.log('hey here');
-      var data = attr.chartData.split(',');
-      var chart = d3.select(element[0]);
-
-      chart.append('div').attr('class', 'chart')
-        .selectAll('div')
-        .data(data).enter().append('div')
-        .transition().ease('elastic')
-        .style('width', function(d) { return d + '%'; })
-        .text(function(d) { return d + '%'; });
-    }
-  };
-});
-
-
 // TODO: below is the d3 calendar directive
 app.directive('yearlyCalendar', function (d3) {
   return {
@@ -37,15 +13,11 @@ app.directive('yearlyCalendar', function (d3) {
      //onClick: '&'
     },
     link : function(scope, element, attrs) {
-      console.log('HELLO I AM IN THE DIRECTIVE NOW!');
-      console.log(scope);
-      console.log(element);
-      console.log(attrs);
-
-      // TODO: d3 calendar config goes here
       var width = 960,
         height = 136,
-        cellSize = 17; // cell size
+        cellSize = 17;
+
+      var today = new Date();
 
       var day = d3.time.format('%w'),
           week = d3.time.format('%U'),
@@ -53,11 +25,11 @@ app.directive('yearlyCalendar', function (d3) {
           format = d3.time.format('%Y-%m-%d');
 
       var color = d3.scale.quantize()
-          .domain([-0.05, 0.05])
+          .domain([0, 10.0])
           .range(d3.range(11).map(function(d) { return 'q' + d + '-11'; }));
 
       var svg = d3.select('body').selectAll('svg')
-          .data(d3.range(1990, 2011))
+          .data(d3.range(today.getFullYear(), today.getFullYear() + 1))
         .enter().append('svg')
           .attr('width', width)
           .attr('height', height)
@@ -96,19 +68,15 @@ app.directive('yearlyCalendar', function (d3) {
           .attr('class', 'month')
           .attr('d', monthPath);
 
-      d3.csv('dji.csv', function(error, csv) {
-        var data = d3.nest()
-          .key(function(d) { return d.Date; })
-          .rollup(function(d) { return (d[0].Close - d[0].Open) / d[0].Open; })
-          .map(csv);
+      // TODO: remove the below test data
+      var data = {'2013-10-12':0, '2013-10-13':5, '2013-10-19':10};
+      //data = JSON.stringify(data);
+      //console.log(data);
 
-        rect.filter(function(d) { return d in data; })
-            .attr('class', function(d) { return 'day ' + color(data[d]); })
-          .select('title')
-            .text(function(d) { return d + ': ' + percent(data[d]); });
-      });
-
-      return d3.select('#year').style('height', '2910px');
+      rect.filter(function(d) { return d in data; })
+          .attr('class', function(d) { return 'day ' + color(data[d]); })
+        .select('title')
+          .text(function(d) { return d + ': ' + percent(data[d]); });
     }
   };
 });
