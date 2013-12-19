@@ -77,15 +77,11 @@ app.directive('yearlyCalendar', function (d3) {
             .attr('class', 'month')
             .attr('d', monthPath);
 
-        //TODO: construct the above year calendar object in the format that d3 requires.
         var convertedData = {};
         for (var d in data) {
           var dateString =  data[d].d3Date;
           convertedData[dateString] = parseInt(data[d].moodRanking);
         }
-
-        console.log('convertedData');
-        console.log(convertedData);
 
         rect.filter(function(d) { return d in convertedData; })
             .attr('class', function(d) { return 'day ' + color(convertedData[d]); })
