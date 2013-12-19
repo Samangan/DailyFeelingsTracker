@@ -59,7 +59,8 @@ app.factory('ThisWeek', function ($localStorage) {
             prettyDate: prevDate.prettyDate,
             moodRanking: prevDate.moodRanking,
             tags: prevDate.tags,
-            currentDay: false
+            currentDay: false,
+            d3Date: prevDate.d3Date
           });
         } else {
           // Date does not exist in localStorage
@@ -73,7 +74,8 @@ app.factory('ThisWeek', function ($localStorage) {
             prettyDate: day.getMonth() + 1 + '/' + day.getDate() + '/' + day.getFullYear(),
             moodRanking: i,
             tags: ['worked too much', 'tired', 'really, really long tag test'],
-            currentDay: false
+            currentDay: false,
+            d3Date: day.toISOString().slice(0, 10)
           });
         }
 
