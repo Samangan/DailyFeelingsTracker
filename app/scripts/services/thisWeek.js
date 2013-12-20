@@ -47,14 +47,14 @@ app.factory('ThisWeek', function ($localStorage) {
         // Check if this date already exists in localStorage
         // TODO: do not define a function within a loop.
         // Externalize these inner functions outside of the loop.
-        if ($localStorage.days && $localStorage.days.filter(function (i) { if (i.date === day.toString()) {return true;} else {return false;}})) {
+        if ($localStorage.days && $localStorage.days.filter(function (i) { if (i.date.toString() === day.toString()) {return true;} else {return false;}})) {
           // Date already exists in localStorage
           // Only write the id, and the currentDay fields (preserving all of the previous data data)
-          var prevDate = $localStorage.days.filter(function (i) { if (i.date === day.toString()) {return true;} else {return false;}});
+          var prevDate = $localStorage.days.filter(function (i) { if (i.date.toString() === day.toString()) {return true;} else {return false;}});
           console.log('exists, not totally overwritting');
           this.days.push({
             id: i,
-            day: dayOfWeek[new Date(prevDate.d3Date).getDay()],
+            day: dayOfWeek[new Date(prevDate.date).getDay()],
             date: prevDate.date,
             prettyDate: prevDate.prettyDate,
             moodRanking: prevDate.moodRanking,
@@ -70,7 +70,7 @@ app.factory('ThisWeek', function ($localStorage) {
           this.days.push({
             id: i,
             day: dayOfWeek[day.getDay()],
-            date: day.toString(),
+            date: day,
             prettyDate: day.getMonth() + 1 + '/' + day.getDate() + '/' + day.getFullYear(),
             moodRanking: i,
             tags: ['worked too much', 'tired', 'really, really long tag test'],
