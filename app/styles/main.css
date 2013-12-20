@@ -22,9 +22,9 @@ body {
 
 /* Each day div */
 .mood-day {
-  background: rgba(238, 205, 92, 0.5);
+  background: rgba(238, 238, 238, 0.91);
   margin-left: 0px;
-  margin-right: 0px;
+  margin-right: 6px;
   margin-top:10px;
   padding:3px;
   position:relative;
@@ -65,7 +65,7 @@ body {
 }
 
 .currentDay {
-   background: rgba(238, 205, 92, 0.70);
+   background: rgba(255, 255, 255, 1);
 }
 
 .dayOfTheWeek {
