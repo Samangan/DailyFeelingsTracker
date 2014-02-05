@@ -26,9 +26,26 @@
 
 
   <div class="mood-year" >
+    <script type="text/javascript">
+      $("[rel=tooltip]").tooltip({html:true});
+    </script>
 
     <h2>This Year</h2>
-    <yearly-calendar data="thisWeekDays.yearData"></yearly-calendar>    
+    <yearly-calendar data="thisWeekDays.yearData"></yearly-calendar>
+    <div class="legend">
+      <div class="legend-header">Hover over legend for information: </div>
+      <div class="legend-1" rel='tooltip' data-original-title="Utterly Depressed"></div>
+      <div class="legend-2" rel='tooltip' data-original-title="Very Sad"></div>
+      <div class="legend-3" rel='tooltip' data-original-title="Sad"></div>
+      <div class="legend-4" rel='tooltip' data-original-title="Unhappy"></div>
+      <div class="legend-5" rel='tooltip' data-original-title="Neutral"></div>
+      <div class="legend-6" rel='tooltip' data-original-title="Content"></div>
+      <div class="legend-7" rel='tooltip' data-original-title="Moderately Happy"></div>  
+      <div class="legend-8" rel='tooltip' data-original-title="Happy"></div>
+      <div class="legend-9" rel='tooltip' data-original-title="Very Happy"></div>
+      <div class="legend-10" rel='tooltip' data-original-title="Ecstatic"></div>
+
+    </div>    
   </div>
 
 </div>

@@ -4,6 +4,19 @@
 var app = angular.module('dailyFeelingTrackerApp.controller');
 
 
+// TODO: make a thisYear factory similar to thisWeek
+function updateYearData (currentWeek, yearData) {
+  console.log('updating year data');
+  for (var j = 0; j < currentWeek.length; j++) {
+    var dayInYear = yearData.filter(function (i) { if (i.date.toString() === currentWeek[j].toString()) {return true;} else {return false;}});
+    if (dayInYear) {
+      yearData[j] = currentWeek[j];
+    } else {
+      yearData.push(currentWeek[j]);
+    }
+  }
+  return yearData;
+}
 
 function MainCtrl ($scope, $localStorage, ThisWeek) {
   //$localStorage.$reset();
@@ -30,18 +43,5 @@ function MainCtrl ($scope, $localStorage, ThisWeek) {
 }
 
 
-// TODO: make a thisYear factory similar to thisWeek
-function updateYearData (currentWeek, yearData) {
-  console.log('updating year data');
-  for (var j = 0; j < currentWeek.length; j++) {
-    var dayInYear = yearData.filter(function (i) { if (i.date.toString() === currentWeek[j].toString()) {return true;} else {return false;}});
-    if (dayInYear) {
-      yearData[j] = currentWeek[j];
-    } else {
-      yearData.push(currentWeek[j]);
-    }
-  }
-  return yearData;
-}
 
 

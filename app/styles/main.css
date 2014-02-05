@@ -143,6 +143,93 @@ body {
 .RdYlGn .q9-11{fill:rgb(26,152,80)}
 .RdYlGn .q10-11{fill:rgb(0,104,55)}
 
+.legend {
+
+}
+
+.legend-header {
+  float:left;
+  padding-right: 20px;
+  font-size: 15px;
+}
+
+.legend-1 {
+  float:left;
+  background: rgb(165,0,38);
+  width: 15px;
+  height: 15px;
+}
+
+.legend-2 {
+  float:left;
+  background:rgb(215,48,39);
+  width: 15px;
+  height: 15px;
+}
+
+
+.legend-2 {
+  float:left;
+  background:rgb(244,109,67);
+  width: 15px;
+  height: 15px;
+}
+
+.legend-3 {
+  float:left;
+  background:rgb(253,174,97);
+  width: 15px;
+  height: 15px;
+}
+
+.legend-4 {
+  float:left;
+  background:rgb(254,224,139);
+  width: 15px;
+  height: 15px;
+}
+
+.legend-5 {
+  float:left;
+  background:rgb(255,255,191);
+  width: 15px;
+  height: 15px;
+}
+
+.legend-6 {
+  float:left;
+  background:rgb(217,239,139);
+  width: 15px;
+  height: 15px;
+}
+
+.legend-7 {
+  float:left;
+  background:rgb(166,217,106);
+  width: 15px;
+  height: 15px;
+}
+
+.legend-8 {
+  float:left;
+  background:rgb(102,189,99);
+  width: 15px;
+  height: 15px;
+}
+
+.legend-9 {
+  float:left;
+  background:rgb(26,152,80);
+  width: 15px;
+  height: 15px;
+}
+
+.legend-10 {
+  float:left;
+  background:rgb(0,104,55);
+  width: 15px;
+  height: 15px;
+}
 
 
 
