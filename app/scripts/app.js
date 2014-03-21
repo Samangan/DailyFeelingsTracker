@@ -24,5 +24,5 @@ angular.module('dailyFeelingTrackerApp', [
 // dependency injection
 angular.module('dailyFeelingTrackerApp.dayStorage', []);
 angular.module('dailyFeelingTrackerApp.directives', []);
-angular.module('dailyFeelingTrackerApp.controller', ['dailyFeelingTrackerApp.directives', 'dailyFeelingTrackerApp.thisWeek']);
+angular.module('dailyFeelingTrackerApp.controller', ['dailyFeelingTrackerApp.directives', 'dailyFeelingTrackerApp.dayStorage']);
 
