@@ -7,7 +7,7 @@ angular.module('dailyFeelingTrackerApp', [
   'ngRoute',
   'ngStorage',
   'dailyFeelingTrackerApp.controller',
-  'dailyFeelingTrackerApp.thisWeek'
+  'dailyFeelingTrackerApp.dayStorage'
 ])
   .config(function ($routeProvider) {
     $routeProvider
@@ -22,7 +22,7 @@ angular.module('dailyFeelingTrackerApp', [
 
 
 // dependency injection
-angular.module('dailyFeelingTrackerApp.thisWeek', []);
+angular.module('dailyFeelingTrackerApp.dayStorage', []);
 angular.module('dailyFeelingTrackerApp.directives', []);
 angular.module('dailyFeelingTrackerApp.controller', ['dailyFeelingTrackerApp.directives', 'dailyFeelingTrackerApp.thisWeek']);
 

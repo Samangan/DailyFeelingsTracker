@@ -6,9 +6,9 @@
 
   <h2>This Week</h2>
   <div class="mood-week">
-    <div class="mood-day" data-ng-repeat="day in thisWeekDays.days" ng-class="{currentDay: day.currentDay}">
-      
-      <div class="dayOfTheWeek">{{day.day}}</div>
+    <div class="mood-day" data-ng-repeat="day in storage.days" ng-class="{currentDay: day.currentDay}">
+      <div class="dayOfTheWeek">{{day.dayName}}</div>
+      <div ng-if="day.currentDay" class="dayOfTheWeek">Today</div>      
       <div class="mood-date">{{day.prettyDate}}</div>   
 
       <div class="moodRanking">
@@ -20,7 +20,7 @@
         </div>        
       </div>
 
-      <div class="addTag" ng-click="thisWeek.addTag(day)">Add a Tag ...</div>
+      <div class="addTag" ng-click="addTag(day)">Add a Tag ...</div>
     </div>
   </div>
 
@@ -31,7 +31,7 @@
     </script>
 
     <h2>This Year</h2>
-    <yearly-calendar data="thisWeekDays.yearData"></yearly-calendar>
+    <yearly-calendar data="storage.days"></yearly-calendar>
     <div class="legend">
       <div class="legend-header">Hover over legend for information: </div>
       <div class="legend-1" rel='tooltip' data-original-title="Utterly Depressed"></div>
