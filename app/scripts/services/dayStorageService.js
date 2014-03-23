@@ -22,7 +22,7 @@ app.factory('DayStorage', function () {
     currentDate.setHours(0,0,0,0);
 
     var firstDayOfCurrentWeek = new Date(currentDate);
-    firstDayOfCurrentWeek.setDate(firstDayOfCurrentWeek.getDate() - firstDayOfCurrentWeek.getDay());    
+    firstDayOfCurrentWeek.setDate(firstDayOfCurrentWeek.getDate() - firstDayOfCurrentWeek.getDay());
     return firstDayOfCurrentWeek;
   };
   
@@ -32,7 +32,7 @@ app.factory('DayStorage', function () {
     if(date === currentDay.getTime()){
       return true;
     } else {
-      return false;      
+      return false;
     }
   };
   
@@ -45,7 +45,7 @@ app.factory('DayStorage', function () {
       if(day.currentDay) {
         day.currentDay = false;
       }
-    }    
+    }
   };
   
   var getIndexOfDay = function ($localStorage, day) {
@@ -65,15 +65,15 @@ app.factory('DayStorage', function () {
       d3Date: day.toISOString().slice(0, 10),
       tags: [],
       moodRanking: 5
-    };    
+    };
     
     if($localStorage.days) {
       // Remove all of the currentWeek data from $localStorage.days
       scrubCurrentWeekData($localStorage);
 
       // Check if this day is already in $localStorage
-      var existingDay = $localStorage.days.filter(function (i) {         
-        if (i.date === dayObj.date) { 
+      var existingDay = $localStorage.days.filter(function (i) {
+        if (i.date === dayObj.date) {
           return true;
         } else {
           return false;
@@ -91,14 +91,14 @@ app.factory('DayStorage', function () {
         //Insert the new object
         dayObj.currentWeek = true;
         dayObj.currentDay = isCurrentDay(dayObj.date);
-        $localStorage.days.push(dayObj);        
-      }      
+        $localStorage.days.push(dayObj);
+      }
     } else {
       $localStorage.days = [];
       //Insert the new object
       dayObj.currentWeek = true;
       dayObj.currentDay = isCurrentDay(dayObj.date);
-      $localStorage.days.push(dayObj);    
+      $localStorage.days.push(dayObj);
     }
   };
   
@@ -110,9 +110,9 @@ app.factory('DayStorage', function () {
       day.setHours(0,0,0,0);
       day.setDate(firstSunOfWeek.getDate() + i);
 
-      saveCurrentDayData($localStorage, day);      
-    }    
-  };  
+      saveCurrentDayData($localStorage, day);
+    }
+  };
   
   return dayStorage;
 });

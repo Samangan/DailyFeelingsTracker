@@ -21,7 +21,7 @@ function MainCtrl ($scope, $localStorage, DayStorage) {
   
   $scope.addTag = function (day) {
     day.tags.push('--Enter Tag Name--');
-  }; 
+  };
   
 }
 
