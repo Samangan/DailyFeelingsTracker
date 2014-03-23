@@ -8,7 +8,6 @@ function MainCtrl ($scope, $localStorage, DayStorage) {
  
   
   var dayStorage = new DayStorage($localStorage);
-  console.log($localStorage);
 
   $scope.storage = $localStorage;
   console.log($scope.storage);
@@ -22,7 +21,7 @@ function MainCtrl ($scope, $localStorage, DayStorage) {
   $scope.addTag = function (day) {
     day.tags.push('--Enter Tag Name--');
   };
-  
+
 }
 
 

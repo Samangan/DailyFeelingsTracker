@@ -8,9 +8,9 @@ app.directive('yearlyCalendar', function (d3) {
   return {
     restrict: 'E',
     scope: {
-      data: '='
+      data: '=',
      //label: '@',
-     //onClick: '&'
+      //onClick: '&'
     },
     link : function(scope, element, attrs) {
       var width = 960,
@@ -23,6 +23,9 @@ app.directive('yearlyCalendar', function (d3) {
         console.log('Hey data changed!');
         return scope.renderCalendar(newVals);
       }, true);
+
+
+      var dayDetailsDiv = angular.element('<div class=\'day-details\'></div>');
 
       scope.renderCalendar = function (data) {
         //remove previous calendar information
@@ -88,6 +91,30 @@ app.directive('yearlyCalendar', function (d3) {
             .attr('class', function(d) { return 'day ' + color(convertedData[d]); })
           .select('title')
             .text(function(d) { return d + ': ' + percent(convertedData[d]); });
+      
+
+        // When a day is clicked on the calendar output it's information        
+        svg.selectAll('.day').on('click', function(d) {
+          var selectedDay = data.filter(function (x) {
+            if (x.d3Date === d) {
+              return true;
+            } else {
+              return false;
+            }
+          })[0];
+
+          dayDetailsDiv.empty();
+          if (selectedDay) {
+            var displayText = selectedDay.dayName + ': '+ selectedDay.prettyDate + ', tags: ';
+            for (var i = 0; i < selectedDay.tags.length; i++) {
+              displayText += selectedDay.tags[i] + ', ';
+            }
+            dayDetailsDiv.append(displayText);
+          }
+
+        });
+        element.append(dayDetailsDiv);
+
       };
     }
   };
