@@ -4,7 +4,7 @@
 var app = angular.module('dailyFeelingTrackerApp.controller');
 
 function MainCtrl ($scope, $localStorage, DayStorage) {
-  $localStorage.$reset();
+  //$localStorage.$reset();
  
   
   var dayStorage = new DayStorage($localStorage);

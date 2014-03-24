@@ -62,7 +62,7 @@ app.factory('DayStorage', function () {
       date: day.getTime(),
       prettyDate: day.getMonth() + 1 + '/' + day.getDate() + '/' + day.getFullYear(),
       d3Date: day.toISOString().slice(0, 10),
-      tags: []      
+      tags: []
     };
     
     if($localStorage.days) {
