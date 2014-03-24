@@ -39,10 +39,8 @@ app.factory('DayStorage', function () {
   var scrubCurrentWeekData = function ($localStorage) {
     for (var i = 0; i < $localStorage.days.length; i++) {
       if($localStorage.days[i].currentWeek) {
-        console.log('scrubbing current week');
         $localStorage.days[i].currentWeek = false;
       }
-      
       if($localStorage.days[i].currentDay) {
         $localStorage.days[i].currentDay = false;
       }
@@ -64,14 +62,10 @@ app.factory('DayStorage', function () {
       date: day.getTime(),
       prettyDate: day.getMonth() + 1 + '/' + day.getDate() + '/' + day.getFullYear(),
       d3Date: day.toISOString().slice(0, 10),
-      tags: [],
-      moodRanking: 5
+      tags: []      
     };
     
     if($localStorage.days) {
-      // Remove all of the currentWeek data from $localStorage.days
-      scrubCurrentWeekData($localStorage);
-
       // Check if this day is already in $localStorage
       var existingDay = $localStorage.days.filter(function (i) {
         if (i.date === dayObj.date) {
@@ -105,12 +99,17 @@ app.factory('DayStorage', function () {
   
   var dayStorage = function ($localStorage) {
     var firstSunOfWeek = getFirstDateOfCurrentWeek();
-    
+
+    if($localStorage.days) {
+      // Remove all of the currentWeek data from $localStorage.days
+      scrubCurrentWeekData($localStorage);
+    }
+
     for (var i = 0; i < 7; i++) {
       var day = new Date(firstSunOfWeek);
       day.setHours(0,0,0,0);
       day.setDate(firstSunOfWeek.getDate() + i);
-
+      
       saveCurrentDayData($localStorage, day);
     }
   };

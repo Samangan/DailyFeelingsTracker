@@ -6,7 +6,7 @@
 
   <h2>This Week</h2>
   <div class="mood-week">
-    <div class="mood-day" data-ng-repeat="day in storage.days" ng-class="{currentDay: day.currentDay}">
+    <div class="mood-day" data-ng-repeat="day in storage.days" ng-if="day.currentWeek" ng-class="{currentDay: day.currentDay}">
       <div class="dayOfTheWeek">{{day.dayName}}</div>
       <div ng-if="day.currentDay" class="dayOfTheWeek">Today</div>      
       <div class="mood-date">{{day.prettyDate}}</div>   
