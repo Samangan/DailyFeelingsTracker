@@ -37,13 +37,14 @@ app.factory('DayStorage', function () {
   };
   
   var scrubCurrentWeekData = function ($localStorage) {
-    for (var day in $localStorage.days) {
-      if(day.currentWeek) {
-        day.currentWeek = false;
+    for (var i = 0; i < $localStorage.days.length; i++) {
+      if($localStorage.days[i].currentWeek) {
+        console.log('scrubbing current week');
+        $localStorage.days[i].currentWeek = false;
       }
       
-      if(day.currentDay) {
-        day.currentDay = false;
+      if($localStorage.days[i].currentDay) {
+        $localStorage.days[i].currentDay = false;
       }
     }
   };
