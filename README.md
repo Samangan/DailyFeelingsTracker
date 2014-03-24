@@ -1,7 +1,7 @@
 Daily Feelings Tracker
 ----------------------
 
-An Angularjs app utilizing local storage to allow users to track their changes in mood each day. Users can create tags to allow for more specific visualization filtering based on specific tags.
+An Angularjs app utilizing local storage and d3.js to allow users to track their changes in mood each day. Users can create tags to allow for more specific visualization filtering based on specific tags.
 
 ![demo](https://raw.githubusercontent.com/Samangan/DailyFeelingsTracker/master/demo.gif)
 
@@ -28,5 +28,5 @@ To deploy your site locally and keep running in live reload mode run:
 Testing
 =======
 
-`$ grunt`
+`$ grunt test`
 
