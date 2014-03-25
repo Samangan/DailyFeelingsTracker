@@ -32,7 +32,34 @@ describe('Service: dayStorageService', function () {
     
     expect(days[0].date).toEqual(firstSunday.getTime());
   });
-    
+
+  it('every day on mockLocalStorage.days should have currentWeek set to true', function () {
+    var days = mockLocalStorage.days;    
+    for (var i = 0; i < days.length; i++) {
+      expect(days[i].currentWeek).toBe(true);
+    }  
+  });
+
+  it('the currentDay on mockLocalStorage.days should be today', function () {
+    var days = mockLocalStorage.days;
+    var today = new Date();
+    today.setHours(0,0,0,0);    
+    expect(days[today.getDay()].date).toEqual(today.getTime());    
+  });
+
+  it('only one day should be the currentDay', function () {
+    var days = mockLocalStorage.days;
+    var currentDays = days.filter(function (day) {
+      if (day.currentDay) {
+        return true;
+      } else {
+        return false;
+      }
+    });    
+
+    expect(currentDays.length).toEqual(1);
+  });
+  
  
 
 });
