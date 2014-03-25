@@ -2,9 +2,6 @@
 
 var app = angular.module('dailyFeelingTrackerApp.dayStorage');
 
-//TODO: to test this factory I just need to make some mock objects and put them on $localStorage
-//TODO: make tests for this factory
-
 app.factory('DayStorage', function () {
   
   var daysOfWeekNames = [
